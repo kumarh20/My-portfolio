@@ -1,0 +1,93 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  background: linear-gradient(to right, #033737, #064242);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  a {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      border-color: #ffffff;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+
+.main-content {
+  padding-top: 2rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+:host {
+  display: block;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.theme-switch {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+
+  mat-icon {
+    font-size: 1.8rem;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover mat-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  margin-left: auto;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0.5rem;
+
+  .icon-switch {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  &:hover .icon-switch {
+    transform: rotate(180deg);
+    color: var(--accent-color);
+  }
+}
+
