@@ -42,7 +42,7 @@
           },
           "configurations": {
             "production": {
-              "index": "src/index.prod.html",
+              "index": "src/index.html",
               "budgets": [
                 {
                   "type": "initial",
