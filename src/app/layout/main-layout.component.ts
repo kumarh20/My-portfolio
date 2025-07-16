@@ -10,13 +10,7 @@ import { HeaderComponent } from './header.component';
   selector: 'app-main-layout',
   imports: [CommonModule, MaterialModule, RouterModule, HeaderComponent, FooterComponent]
 ,
-  template: `
-  <app-header></app-header>
-  <main class="main-content">
-    <router-outlet></router-outlet>
-  </main>
-  <app-footer></app-footer>
-  `,
+  templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
