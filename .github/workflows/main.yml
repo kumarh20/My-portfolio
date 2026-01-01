@@ -3,7 +3,7 @@ name: Deploy Angular Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - main   # change if your default branch is different
+      - master   # change if your default branch is different
 
 permissions:
   contents: write
