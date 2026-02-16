@@ -86,8 +86,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   stats = [
-    { value: '2+', label: 'Years Experience' },
-    { value: '15+', label: 'Projects Completed' },
+    { value: '3+', label: 'Years Experience' },
+    { value: '3+', label: 'Projects Completed' },
     { value: 'MCA', label: 'Highest Degree' },
     { value: '10+', label: 'Technologies' }
   ];
@@ -111,42 +111,64 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeScrollAnimations(): void {
     // Animate sections on scroll
-    gsap.from('.about-image-wrapper', {
-      scrollTrigger: {
-        trigger: '.about-image-wrapper',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+    gsap.fromTo('.about-image-wrapper',
+      {
+        opacity: 0,
+        x: -50
       },
-      opacity: 0,
-      x: -50,
-      duration: 0.8,
-      ease: 'power2.out'
-    });
+      {
+        scrollTrigger: {
+          trigger: '.about-image-wrapper',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      }
+    );
 
-    gsap.from('.about-bio', {
-      scrollTrigger: {
-        trigger: '.about-bio',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+    gsap.fromTo('.about-bio',
+      {
+        opacity: 0,
+        x: 50
       },
-      opacity: 0,
-      x: 50,
-      duration: 0.8,
-      ease: 'power2.out'
-    });
+      {
+        scrollTrigger: {
+          trigger: '.about-bio',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      }
+    );
 
-    gsap.from('.stat-card', {
-      scrollTrigger: {
-        trigger: '.stats-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+    gsap.fromTo('.stat-card', 
+      {
+        opacity: 0,
+        y: 30
       },
-      opacity: 0,
-      y: 30,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
+      {
+        scrollTrigger: {
+          trigger: '.stats-grid',
+          start: 'top 85%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power2.out'
+      }
+    );
   }
 
   downloadCV(): void {

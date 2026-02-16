@@ -76,44 +76,63 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   private initializeScrollAnimations(): void {
     // Animate skill categories
     this.skillCategories.forEach((category, index) => {
-      gsap.from(`.skill-category:nth-child(${index + 1})`, {
-        scrollTrigger: {
-          trigger: `.skill-category:nth-child(${index + 1})`,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
+      gsap.fromTo(`.skill-category:nth-child(${index + 1})`,
+        {
+          opacity: 0,
+          y: 50
         },
-        opacity: 0,
-        y: 50,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
+        {
+          scrollTrigger: {
+            trigger: `.skill-category:nth-child(${index + 1})`,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out'
+        }
+      );
 
       // Animate progress bars
-      gsap.from(`.skill-category:nth-child(${index + 1}) .skill-progress-fill`, {
-        scrollTrigger: {
-          trigger: `.skill-category:nth-child(${index + 1})`,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
+      gsap.fromTo(`.skill-category:nth-child(${index + 1}) .skill-progress-fill`,
+        {
+          width: 0
         },
-        width: 0,
-        duration: 1.2,
-        ease: 'power2.out',
-        stagger: 0.1
-      });
+        {
+          scrollTrigger: {
+            trigger: `.skill-category:nth-child(${index + 1})`,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true
+          },
+          width: '100%',
+          duration: 1.2,
+          ease: 'power2.out',
+          stagger: 0.1
+        }
+      );
 
       // Animate percentage numbers
-      gsap.from(`.skill-category:nth-child(${index + 1}) .skill-percentage`, {
-        scrollTrigger: {
-          trigger: `.skill-category:nth-child(${index + 1})`,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
+      gsap.fromTo(`.skill-category:nth-child(${index + 1}) .skill-percentage`,
+        {
+          textContent: 0
         },
-        textContent: 0,
-        duration: 1.2,
-        ease: 'power2.out',
-        snap: { textContent: 1 },
-        stagger: 0.1
-      });
+        {
+          scrollTrigger: {
+            trigger: `.skill-category:nth-child(${index + 1})`,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true
+          },
+          textContent: 100,
+          duration: 1.2,
+          ease: 'power2.out',
+          snap: { textContent: 1 },
+          stagger: 0.1
+        }
+      );
     });
   }
 

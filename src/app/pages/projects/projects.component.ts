@@ -70,19 +70,27 @@ export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeScrollAnimations(): void {
     // Stagger animation for project cards
-    gsap.from('.project-card', {
-      scrollTrigger: {
-        trigger: '.projects-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+    gsap.fromTo('.project-card',
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.95
       },
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
+      {
+        scrollTrigger: {
+          trigger: '.projects-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: 'power2.out'
+      }
+    );
   }
 
   openLink(url: string): void {
