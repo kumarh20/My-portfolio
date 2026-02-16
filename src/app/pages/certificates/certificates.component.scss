@@ -340,3 +340,13 @@
     padding: var(--space-md) var(--space-lg);
   }
 }
+
+/* Ensure PDF document is visible by default (override any opacity rules) */
+.certificates .pdf-modal,
+.certificates .pdf-modal-content,
+.certificates .pdf-viewer-container,
+.certificates .pdf-iframe {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
