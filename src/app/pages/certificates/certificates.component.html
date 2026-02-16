@@ -1,0 +1,110 @@
+<section class="certificates section">
+  <div class="container">
+    <!-- Section Title -->
+    <app-section-title
+      subtitle="Achievements"
+      title="Certificates & Awards"
+      description="Professional certifications and recognitions earned throughout my career">
+    </app-section-title>
+
+    <!-- Certificates Grid -->
+    <div class="certificates-grid">
+      <article *ngFor="let cert of certificates" class="certificate-card" @fadeInUp>
+        <!-- Certificate Thumbnail -->
+        <div class="certificate-thumbnail">
+          <div class="certificate-icon">📜</div>
+          <img 
+            *ngIf="cert.thumbnail"
+            [src]="cert.thumbnail" 
+            [alt]="cert.title"
+            class="certificate-bg-image"
+            loading="lazy" />
+        </div>
+
+        <!-- Certificate Content -->
+        <div class="certificate-content">
+          <h3 class="certificate-title">{{ cert.title }}</h3>
+          <p class="certificate-issuer">{{ cert.issuer }}</p>
+          <p class="certificate-date">{{ cert.date }}</p>
+          <p class="certificate-description">{{ cert.description }}</p>
+
+          <!-- Certificate Actions -->
+          <div class="certificate-actions">
+            <button 
+              type="button"
+              class="btn btn-primary"
+              (click)="viewCertificate(cert); $event.stopPropagation()">
+              <span>👁️</span> View Certificate
+            </button>
+            <button 
+              type="button"
+              class="btn btn-outline"
+              (click)="downloadCertificate(cert); $event.stopPropagation()">
+              <span>⬇️</span> Download
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PDF Viewer Modal -->
+<div 
+  class="pdf-modal" 
+  *ngIf="isModalOpen && selectedCertificate"
+  (click)="closeCertificate()">
+  <div class="pdf-modal-content" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="pdf-modal-header">
+      <div class="modal-title-section">
+        <h3>{{ selectedCertificate.title }}</h3>
+        <p class="modal-subtitle">{{ selectedCertificate.issuer }} • {{ selectedCertificate.date }}</p>
+      </div>
+      <button 
+        class="pdf-modal-close"
+        (click)="closeCertificate()"
+        aria-label="Close modal"
+        type="button">
+        ✕
+      </button>
+    </div>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-viewer-container">
+      <iframe 
+        [src]="getSafeUrl(selectedCertificate.pdfUrl)" 
+        class="pdf-iframe"
+        title="Certificate PDF Viewer"
+        allowfullscreen>
+      </iframe>
+      <div class="pdf-loading">
+        <div class="spinner"></div>
+        <p>Loading PDF...</p>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="pdf-modal-footer">
+      <button 
+        class="btn btn-primary"
+        (click)="downloadCertificate(selectedCertificate, $event)"
+        type="button">
+        <span>⬇️</span> Download PDF
+      </button>
+      <a 
+        [href]="selectedCertificate.pdfUrl" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline">
+        <span>🔗</span> Open in New Tab
+      </a>
+      <button 
+        class="btn btn-outline"
+        (click)="closeCertificate()"
+        type="button">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

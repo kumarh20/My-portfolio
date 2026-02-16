@@ -1,0 +1,290 @@
+// ============================================
+// HERO SECTION - EXACT SPECIFICATIONS
+// ============================================
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  
+  // Background is now handled globally by app.component
+  background: transparent;
+}
+
+// ============================================
+// CONTAINER & LAYOUT
+// ============================================
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  z-index: 1;
+  
+  @media (max-width: 1199px) {
+    // Tablet
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 60px;
+    padding: 0 40px;
+  }
+  
+  @media (max-width: 767px) {
+    // Mobile
+    padding: 0 24px;
+    gap: 48px;
+  }
+}
+
+// ============================================
+// LEFT CONTENT SECTION
+// ============================================
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  @media (max-width: 1199px) {
+    align-items: center;
+  }
+}
+
+// Role Label
+.hero-role {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #22D3EE;
+  margin: 0;
+}
+
+// Main Title
+.hero-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  margin: 0;
+  
+  @media (max-width: 1199px) {
+    font-size: 56px;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: 42px;
+  }
+}
+
+// Gradient Name
+.hero-name {
+  display: inline-block;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Description
+.hero-description {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #CBD5E1;
+  margin: 0;
+  max-width: 520px;
+  
+  @media (max-width: 1199px) {
+    max-width: 600px;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+
+// ============================================
+// BUTTONS
+// ============================================
+
+.hero-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+.btn {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 14px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  white-space: nowrap;
+  border: none;
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid #6366F1;
+    outline-offset: 2px;
+  }
+  
+  @media (max-width: 767px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// Primary Button
+.btn-primary {
+  background: linear-gradient(135deg, #6366F1 0%, #22D3EE 100%);
+  color: #FFFFFF;
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(-4px);
+  }
+}
+
+// Outline Button
+.btn-outline {
+  background: transparent;
+  color: #6366F1;
+  border: 2px solid #6366F1;
+  padding: 12px 30px; // Adjusted for border
+  
+  &:hover {
+    background: #6366F1;
+    color: #FFFFFF;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    transform: translateY(-6px);
+  }
+  
+  &:active {
+    transform: translateY(-4px);
+  }
+}
+
+// ============================================
+// RIGHT IMAGE SECTION
+// ============================================
+
+.hero-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @media (max-width: 1199px) {
+    order: -1; // Image above content on tablet/mobile
+  }
+}
+
+.image-card {
+  position: relative;
+  width: 420px;
+  height: 520px;
+  border-radius: 28px;
+  overflow: hidden;
+  will-change: transform;
+  
+  // Animated border glow
+  box-shadow: 
+    0 0 0 1px rgba(99, 102, 241, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.6),
+    0 0 80px rgba(34, 211, 238, 0.4);
+  
+  animation: borderGlow 3s ease-in-out infinite;
+  
+  @media (max-width: 1199px) {
+    width: 320px;
+    height: 420px;
+  }
+  
+  @media (max-width: 767px) {
+    width: 280px;
+    height: 360px;
+  }
+}
+
+// Outer glow effect
+.image-glow {
+  position: absolute;
+  inset: -40px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.6) 0%,
+    rgba(139, 92, 246, 0.5) 50%,
+    rgba(34, 211, 238, 0.4) 100%
+  );
+  filter: blur(80px);
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: 28px;
+  pointer-events: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba(99, 102, 241, 0.3),
+      0 0 40px rgba(99, 102, 241, 0.6),
+      0 0 80px rgba(34, 211, 238, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 1px rgba(99, 102, 241, 0.5),
+      0 0 50px rgba(99, 102, 241, 0.8),
+      0 0 100px rgba(34, 211, 238, 0.6);
+  }
+}
+
+// Floating animation is handled by GSAP in component
+
+// ============================================
+// RESPONSIVE BREAKPOINTS
+// ============================================
+
+// Desktop: ≥1200px (default styles)
+// Tablet: 768px–1199px
+// Mobile: ≤767px

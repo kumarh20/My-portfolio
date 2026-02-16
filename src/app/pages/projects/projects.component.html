@@ -1,0 +1,72 @@
+<section class="projects section">
+  <div class="container">
+    <!-- Section Title -->
+    <app-section-title
+      subtitle="My Work"
+      title="Featured Projects"
+      description="Explore my latest projects showcasing modern web development">
+    </app-section-title>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <article *ngFor="let project of projects" class="project-card">
+        <!-- Project Image -->
+        <div class="project-image-wrapper">
+          <img 
+            [src]="project.image" 
+            [alt]="project.title" 
+            class="project-image"
+            loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-actions">
+              <app-button 
+                variant="primary" 
+                size="sm"
+                (click)="openLink(project.liveUrl || project.githubUrl)">
+                View Demo
+              </app-button>
+              <app-button 
+                variant="outline" 
+                size="sm"
+                (click)="openLink(project.githubUrl)">
+                GitHub
+              </app-button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Content -->
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+
+          <!-- Tech Stack -->
+          <div class="project-tech">
+            <span *ngFor="let tech of project.techStack" class="tech-tag">
+              {{ tech }}
+            </span>
+          </div>
+
+          <!-- Project Links -->
+          <div class="project-links">
+            <a 
+              [href]="project.githubUrl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="project-link">
+              GitHub →
+            </a>
+            <a 
+              *ngIf="project.liveUrl"
+              [href]="project.liveUrl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="project-link">
+              Live Demo →
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

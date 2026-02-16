@@ -1,0 +1,59 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <a routerLink="/" class="navbar-logo">
+      <span class="logo-text">Portfolio</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="navbar-menu">
+      <li *ngFor="let link of navLinks" class="navbar-item">
+        <a 
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: link.path === '/'}"
+          class="navbar-link">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="mobile-menu-btn" 
+      (click)="toggleMobileMenu()"
+      [class.open]="isMobileMenuOpen()"
+      aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div 
+    class="mobile-menu" 
+    [class.open]="isMobileMenuOpen()"
+    @slideInOut
+    *ngIf="isMobileMenuOpen()">
+    <ul class="mobile-menu-list">
+      <li *ngFor="let link of navLinks" class="mobile-menu-item">
+        <a 
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: link.path === '/'}"
+          class="mobile-menu-link"
+          (click)="closeMobileMenu()">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile Menu Backdrop -->
+  <div 
+    class="mobile-menu-backdrop" 
+    *ngIf="isMobileMenuOpen()"
+    (click)="closeMobileMenu()">
+  </div>
+</nav>

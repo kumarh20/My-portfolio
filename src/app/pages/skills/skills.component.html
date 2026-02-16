@@ -1,0 +1,46 @@
+<section class="skills section">
+  <div class="container">
+    <!-- Section Title -->
+    <app-section-title
+      subtitle="What I Know"
+      title="Skills & Expertise"
+      description="Technologies and tools I work with to bring ideas to life">
+    </app-section-title>
+
+    <!-- Skills Grid -->
+    <div class="skills-wrapper">
+      <div *ngFor="let category of skillCategories" class="skill-category">
+        <h3 class="category-title">{{ category.title }}</h3>
+        
+        <div class="skills-list">
+          <div *ngFor="let skill of category.skills" class="skill-item">
+            <!-- Skill Header -->
+            <div class="skill-header">
+              <div class="skill-info">
+                <span class="skill-icon">{{ skill.icon }}</span>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+              <span class="skill-percentage">{{ skill.level }}%</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="skill-progress">
+              <div 
+                class="skill-progress-fill" 
+                [style.width.%]="skill.level">
+                <div class="progress-glow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Info -->
+    <div class="skills-footer">
+      <p class="footer-text">
+        Always learning and exploring new technologies to stay at the cutting edge of web development.
+      </p>
+    </div>
+  </div>
+</section>

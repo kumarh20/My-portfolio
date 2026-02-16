@@ -1,0 +1,41 @@
+<section class="hero" #heroBackground>
+  <div class="hero-container">
+    <!-- Left Content -->
+    <div class="hero-content" @textEntrance>
+      <p class="hero-role">{{ roleLabel }}</p>
+      <h1 class="hero-title">
+        Hi, I'm <span class="hero-name">{{ name }}</span>
+      </h1>
+      <p class="hero-description">{{ description }}</p>
+      
+      <div class="hero-actions">
+        <button 
+          type="button"
+          class="btn btn-primary" 
+          (click)="onViewProjects()"
+          aria-label="View my projects">
+          View Projects
+        </button>
+        <button 
+          type="button"
+          class="btn btn-outline" 
+          (click)="onContactMe()"
+          aria-label="Contact me">
+          Contact Me
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Image Card -->
+    <div class="hero-image-wrapper" @imageEntrance>
+      <div class="image-card" #profileCard>
+        <div class="image-glow"></div>
+        <img 
+          [src]="profileImage" 
+          [alt]="name + ' - ' + roleLabel"
+          class="hero-image" 
+          loading="eager" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<section class="contact section">
+  <div class="container">
+    <!-- Section Title -->
+    <app-section-title
+      subtitle="Get In Touch"
+      title="Contact Me"
+      description="Have a project in mind? Let's work together">
+    </app-section-title>
+
+    <div class="contact-wrapper">
+      <!-- Contact Info Cards -->
+      <div class="contact-info" [@fadeInUp]>
+        <div *ngFor="let info of contactInfo" class="info-card">
+          <div class="info-icon">{{ info.icon }}</div>
+          <div class="info-content">
+            <h4 class="info-label">{{ info.label }}</h4>
+            <a 
+              *ngIf="info.link; else noLink"
+              [href]="info.link" 
+              class="info-value">
+              {{ info.value }}
+            </a>
+            <ng-template #noLink>
+              <p class="info-value">{{ info.value }}</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper" [@fadeInUp]>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <!-- Name Field -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-input"
+              placeholder=" "
+              [class.error]="hasError('name')" />
+            <label for="name" class="form-label">Name</label>
+            <span *ngIf="hasError('name')" class="error-message">
+              {{ getErrorMessage('name') }}
+            </span>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-input"
+              placeholder=" "
+              [class.error]="hasError('email')" />
+            <label for="email" class="form-label">Email</label>
+            <span *ngIf="hasError('email')" class="error-message">
+              {{ getErrorMessage('email') }}
+            </span>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-group">
+            <textarea
+              id="message"
+              formControlName="message"
+              class="form-input form-textarea"
+              placeholder=" "
+              rows="6"
+              [class.error]="hasError('message')"></textarea>
+            <label for="message" class="form-label">Message</label>
+            <span *ngIf="hasError('message')" class="error-message">
+              {{ getErrorMessage('message') }}
+            </span>
+          </div>
+
+          <!-- Success Message -->
+          <div *ngIf="submitSuccess" class="alert alert-success">
+            ✓ Message sent successfully! I'll get back to you soon.
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="submitError" class="alert alert-error">
+            ✗ Failed to send message. Please try again.
+          </div>
+
+          <!-- Submit Button -->
+          <app-button
+            type="submit"
+            variant="primary"
+            size="lg"
+            [disabled]="isSubmitting"
+            [fullWidth]="true">
+            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+          </app-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

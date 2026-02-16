@@ -1,0 +1,342 @@
+.certificates {
+  background: transparent;
+  padding-top: calc(var(--header-height) + var(--section-padding-desktop));
+  
+  @media (max-width: 1024px) {
+    padding-top: calc(var(--header-height) + var(--section-padding-tablet));
+  }
+  
+  @media (max-width: 768px) {
+    padding-top: calc(var(--header-height) + var(--section-padding-mobile));
+  }
+}
+
+// Certificates Grid
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+// Certificate Card
+.certificate-card {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+    
+    .certificate-bg-image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Certificate Thumbnail
+.certificate-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(34, 211, 238, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.certificate-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.certificate-icon {
+  font-size: 4rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+// Certificate Content
+.certificate-content {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.certificate-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.certificate-issuer {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.certificate-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.certificate-description {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: var(--space-sm) 0;
+  flex: 1;
+}
+
+// Certificate Actions
+.certificate-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex: 1;
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    }
+  }
+  
+  &.btn-outline {
+    background: transparent;
+    border-color: var(--primary);
+    color: var(--primary);
+    
+    &:hover {
+      background: rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// PDF Modal
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  opacity: 1 !important;
+}
+
+.pdf-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.90);
+  z-index: 1;
+}
+
+.pdf-modal-content {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 1400px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  opacity: 1 !important;
+}
+
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 2px solid var(--bg-tertiary);
+  background: var(--bg-secondary);
+}
+
+.modal-title-section {
+  flex: 1;
+  
+  h3 {
+    margin: 0 0 var(--space-xs) 0;
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+  }
+  
+  .modal-subtitle {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+}
+
+.pdf-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+  
+  &:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+  }
+}
+
+.pdf-viewer-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  opacity: 1 !important;
+}
+
+.pdf-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.pdf-loading {
+  display: none;
+}
+
+.pdf-modal-footer {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-xl);
+  border-top: 2px solid var(--bg-tertiary);
+  background: var(--bg-secondary);
+  flex-wrap: wrap;
+  
+  @media (max-width: 640px) {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .certificate-content {
+    padding: var(--space-lg);
+  }
+  
+  .certificate-thumbnail {
+    height: 150px;
+  }
+  
+  .certificate-icon {
+    font-size: 3rem;
+  }
+  
+  .pdf-modal {
+    padding: 0;
+  }
+  
+  .pdf-modal-content {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .pdf-modal-header {
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .modal-title-section h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .pdf-modal-footer {
+    padding: var(--space-md) var(--space-lg);
+  }
+}

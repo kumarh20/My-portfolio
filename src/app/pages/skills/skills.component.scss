@@ -1,0 +1,204 @@
+.skills {
+  background: transparent; // Stars are handled globally by app.component
+  padding-top: calc(var(--header-height) + var(--section-padding-desktop));
+  
+  @media (max-width: 1024px) {
+    padding-top: calc(var(--header-height) + var(--section-padding-tablet));
+  }
+  
+  @media (max-width: 768px) {
+    padding-top: calc(var(--header-height) + var(--section-padding-mobile));
+  }
+}
+
+// Skills Wrapper
+.skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+// Skill Category
+.skill-category {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+  
+  @media (max-width: 768px) {
+    padding: var(--space-xl);
+  }
+}
+
+.category-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--bg-tertiary);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  }
+}
+
+// Skills List
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+// Skill Item
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.skill-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.skill-icon {
+  font-size: var(--font-size-xl);
+  line-height: 1;
+}
+
+.skill-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.skill-percentage {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  min-width: 45px;
+  text-align: right;
+}
+
+// Progress Bar
+.skill-progress {
+  position: relative;
+  height: 10px;
+  background: var(--bg-tertiary);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 5px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+}
+
+.progress-glow {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 20px;
+  height: 14px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Skills Footer
+.skills-footer {
+  margin-top: var(--space-3xl);
+  padding: var(--space-2xl);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(34, 211, 238, 0.1) 100%
+  );
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  text-align: center;
+}
+
+.footer-text {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-base);
+  }
+}
+
+// Hover Effects
+@media (hover: hover) {
+  .skill-item:hover {
+    .skill-name {
+      color: var(--primary);
+    }
+    
+    .skill-progress-fill {
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.6);
+    }
+  }
+}
